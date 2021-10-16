@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 const mainColor = Color(0xFFE1E6EB);
-const actionColor = Color(0xFFA9B8C6);
+const actionMainColor = Color(0xFFB6C2CE);
+const hoverMainColor = Color(0xFFCED6DE);
 const backgroundColor = Color(0xFFF2F5F8);
 const red = Color(0xFFFF4949);
 const orange = Color(0xFFFF7A29);
