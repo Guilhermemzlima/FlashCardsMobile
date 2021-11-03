@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flashcard/ui_style_guides/ui_style_guides.dart';
 
 class ListItem extends StatelessWidget {
-  final String titulo;
-  final String subTitulo;
+  final Items _items;
 
-  ListItem(this.titulo, this.subTitulo);
+  ListItem(this._items);
 
   @override
   Widget build(BuildContext context) {
@@ -26,13 +25,13 @@ class ListItem extends StatelessWidget {
             child: ListTile(
               leading: FlutterLogo(size: 35),
               title: Row(children: [
-                Text(titulo, style: titleStyleBold),
+                Text(_items.titleItem, style: titleStyleBold),
                 Padding(
                   padding: EdgeInsets.only(left: 10),
-                  child: Icon(Icons.verified),
+                  child: _items.isVerifiedItem == true ? Icon(Icons.verified) : null,
                 )
               ]),
-              subtitle: Text(subTitulo, style: subTitleStyle),
+              subtitle: Text(_items.subTitleItem, style: subTitleStyle),
               trailing: Icon(
                 Icons.more_vert,
                 color: Colors.black,
@@ -40,5 +39,18 @@ class ListItem extends StatelessWidget {
             ),
           ),
         ));
+  }
+}
+
+class Items {
+  final String titleItem;
+  final String subTitleItem;
+  final bool isVerifiedItem;
+
+  Items(this.titleItem, this.subTitleItem, this.isVerifiedItem);
+
+  @override
+  String toString() {
+    return 'Items{titleItem: $titleItem, subTitleItem: $subTitleItem, isVerifiedItem: $isVerifiedItem}';
   }
 }
