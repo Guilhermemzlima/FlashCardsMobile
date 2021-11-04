@@ -1,3 +1,5 @@
+import 'package:flashcard/presentation/home/pages/home/home_page.dart';
+import 'package:flashcard/presentation/routes/routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flashcard/ui_style_guides/ui_style_guides.dart';
@@ -10,16 +12,11 @@ class FlashCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'FlashCards',
-        home: Scaffold(
-            extendBody: true,
-            extendBodyBehindAppBar: false,
-            backgroundColor: backgroundColor,
-            appBar: MyAppBar(),
-            body: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [SuggestedPlaylistsHome(), RecentsDecks()],
-            )));
+      title: 'FlashCards',
+      home: HomePage(),
+      // routes: routes,
+      onGenerateRoute: generateRoutes,
+    );
   }
 }
 
@@ -27,6 +24,7 @@ class SuggestedPlaylistsHome extends StatelessWidget {
   const SuggestedPlaylistsHome({Key? key}) : super(key: key);
 
   @override
+
   Widget build(BuildContext context) {
     return Container(
         padding: EdgeInsets.symmetric(

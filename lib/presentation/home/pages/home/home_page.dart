@@ -1,3 +1,4 @@
+import 'package:flashcard/ui_style_guides/widgets/navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flashcard/ui_style_guides/ui_style_guides.dart';
@@ -5,9 +6,15 @@ import 'package:flashcard/ui_style_guides/ui_style_guides.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [SuggestedPlaylistsHome(), RecentsDecks()]);
+    return Scaffold(
+        extendBody: false,
+        extendBodyBehindAppBar: false,
+        backgroundColor: backgroundColor,
+        appBar: MyAppBar(title: "Home"),
+        bottomNavigationBar: Navbar(Navbar.HOME_INDEX),
+        body: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [SuggestedPlaylistsHome(), RecentsDecks()]));
   }
 }
 
@@ -17,17 +24,18 @@ class SuggestedPlaylistsHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.symmetric(
-          vertical: 40,
-          horizontal: 30,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text("Playlist Sugeridas", style: titleStyleBold),
-            SuggestedCardsHome(),
-          ],
-        ));
+      padding: EdgeInsets.symmetric(
+        vertical: 40,
+        horizontal: 30,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("Playlist Sugeridas", style: titleStyleBold),
+          SuggestedCardsHome(),
+        ],
+      ),
+    );
   }
 }
 

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flashcard/ui_style_guides/ui_style_guides.dart';
 
-class MyAppBar extends StatelessWidget implements PreferredSizeWidget{
-  const MyAppBar({Key? key}) : super(key: key);
+class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const MyAppBar({Key? key, required this.title}) : super(key: key);
+
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +14,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget{
       backgroundColor: backgroundColor,
       elevation: 0,
       title: Text(
-        "Home",
+        title,
         style: titleStyleBold,
       ),
     );

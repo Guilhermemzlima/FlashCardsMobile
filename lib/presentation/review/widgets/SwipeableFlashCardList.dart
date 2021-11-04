@@ -1,11 +1,11 @@
 import 'dart:developer';
 
 import 'package:flashcard/ui_style_guides/my_colors/my_colors.dart';
-import 'package:flashcard/ui_style_guides/widgets/FlashCard.dart';
+import 'package:flashcard/presentation/review/widgets/FlashCard.dart';
 import 'package:flutter/material.dart';
 import 'package:swipe_cards/swipe_cards.dart';
 
-class SwipeableFlashCard extends StatelessWidget {
+class SwipeableFlashCardList extends StatelessWidget {
   final List<FlashCardContent> flashcards = List<FlashCardContent>.of([
     FlashCardContent("Front 1", "Back 1", mainColor),
     FlashCardContent("Front 2", "Back 2", red),

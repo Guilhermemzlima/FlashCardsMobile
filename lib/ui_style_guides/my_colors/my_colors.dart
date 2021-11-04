@@ -13,3 +13,4 @@ const green = Color(0xFF13CE66);
 const blue = Color(0xFF2D8EFF);
 const purple = Color(0xFF991EF9);
 const pink = Color(0xFFFF5DCD);
+const black = Color(0xFF000000);
