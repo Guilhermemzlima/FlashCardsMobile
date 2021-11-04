@@ -1,7 +1,8 @@
-import 'package:flashcard/presentation/routes/routes.dart';
+import 'package:flashcard/presentation/home/pages/Home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flashcard/navigation/pages.dart';
+
+import 'infrastructure/routes/routes.dart';
 
 void main() {
   runApp(FlashCards());

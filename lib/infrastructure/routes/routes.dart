@@ -1,6 +1,6 @@
-import 'package:flashcard/navigation/pages/Home.dart';
-import 'package:flashcard/navigation/pages/Library.dart';
-import 'package:flashcard/navigation/pages/Search.dart';
+import 'package:flashcard/presentation/home/pages/Home.dart';
+import 'package:flashcard/presentation/library/pages/Library.dart';
+import 'package:flashcard/presentation/search/pages/Search.dart';
 import 'package:flashcard/presentation/review/pages/%20review_page.dart';
 import 'package:flutter/material.dart';
 
