@@ -1,3 +1,4 @@
+import 'package:flashcard/ui_style_guides/widgets/navbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,7 @@ class LibraryPage extends StatelessWidget {
     return Scaffold(
       extendBody: true,
       extendBodyBehindAppBar: false,
+      bottomNavigationBar: Navbar(Navbar.LIBRARY_INDEX),
       backgroundColor: backgroundColor,
       appBar: MyAppBar("Biblioteca"),
       body: DefaultTabController(

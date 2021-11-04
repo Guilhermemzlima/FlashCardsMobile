@@ -1,4 +1,5 @@
 import 'package:flashcard/navigation/pages.dart';
+import 'package:flashcard/ui_style_guides/widgets/navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flashcard/ui_style_guides/ui_style_guides.dart';
 
@@ -10,6 +11,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       extendBody: true,
       extendBodyBehindAppBar: false,
+      bottomNavigationBar: Navbar(Navbar.HOME_INDEX),
       backgroundColor: backgroundColor,
       appBar: MyAppBar("Home"),
       body: ListView(

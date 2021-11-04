@@ -12,7 +12,7 @@ class FlashCards extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'FlashCards',
-      home: LibraryPage(),
+      home: HomePage(),
       // routes: routes,
       onGenerateRoute: generateRoutes,
     );

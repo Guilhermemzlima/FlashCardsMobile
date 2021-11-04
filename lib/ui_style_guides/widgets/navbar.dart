@@ -17,9 +17,9 @@ class Navbar extends StatelessWidget {
         BottomNavigationBarItem(label: "Início", icon: Icon(Icons.home))),
     NavbarItem(searchRoute,
         BottomNavigationBarItem(label: "Busca", icon: Icon(Icons.search))),
-    NavbarItem(homeRoute,
+    NavbarItem(libraryRoute,
         BottomNavigationBarItem(label: "Biblioteca", icon: Icon(Icons.book))),
-    NavbarItem(homeRoute,
+    NavbarItem(reviewRoute,
         BottomNavigationBarItem(label: "Perfil", icon: Icon(Icons.person))),
   ];
 

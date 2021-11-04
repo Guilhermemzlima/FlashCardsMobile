@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flashcard/ui_style_guides/ui_style_guides.dart';
 
-
 class SuggestedCardsHome extends StatelessWidget {
   const SuggestedCardsHome({Key? key}) : super(key: key);
 
