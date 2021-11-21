@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flashcard/ui_style_guides/ui_style_guides.dart';
 
 class ListItem extends StatelessWidget {
-  final Items _items;
+  final ListItemProperties _items;
 
   ListItem(this._items);
 
@@ -42,12 +42,12 @@ class ListItem extends StatelessWidget {
   }
 }
 
-class Items {
+class ListItemProperties {
   final String titleItem;
   final String subTitleItem;
   final bool isVerifiedItem;
 
-  Items(this.titleItem, this.subTitleItem, this.isVerifiedItem);
+  ListItemProperties(this.titleItem, this.subTitleItem, this.isVerifiedItem);
 
   @override
   String toString() {

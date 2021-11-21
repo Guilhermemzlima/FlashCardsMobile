@@ -33,7 +33,7 @@ class CreateForms extends StatelessWidget {
     final String playlistDescription = _controllerPlaylistDescription.text;
 
     if ((playlistName != '') && playlistDescription != '') {
-      final newListItem = Items(playlistName, playlistDescription, false);
+      final newListItem = ListItemProperties(playlistName, playlistDescription, false);
       print('$newListItem');
       Navigator.pop(context,newListItem);
     }

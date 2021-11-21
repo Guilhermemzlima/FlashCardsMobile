@@ -19,7 +19,7 @@ class Navbar extends StatelessWidget {
         BottomNavigationBarItem(label: "Busca", icon: Icon(Icons.search))),
     NavbarItem(libraryRoute,
         BottomNavigationBarItem(label: "Biblioteca", icon: Icon(Icons.book))),
-    NavbarItem(reviewRoute,
+    NavbarItem(deckDetailRoute,
         BottomNavigationBarItem(label: "Perfil", icon: Icon(Icons.person))),
   ];
 

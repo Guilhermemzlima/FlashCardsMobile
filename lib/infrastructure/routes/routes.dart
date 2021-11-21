@@ -1,3 +1,4 @@
+import 'package:flashcard/presentation/deck/pages/deck_detail_page.dart';
 import 'package:flashcard/presentation/home/pages/Home.dart';
 import 'package:flashcard/presentation/library/pages/Library.dart';
 import 'package:flashcard/presentation/search/pages/Search.dart';
@@ -8,6 +9,7 @@ const libraryRoute = "/library";
 const searchRoute = "/search";
 const homeRoute = "/home";
 const reviewRoute = "/review";
+const deckDetailRoute = "/deckDetail";
 
 T getArg<T>(BuildContext context) =>
     ModalRoute.of(context)!.settings.arguments as T;
@@ -22,6 +24,8 @@ Widget _getRoute(RouteSettings settings) {
       return SearchPage();
     case reviewRoute:
       return ReviewPage();
+    case deckDetailRoute:
+      return DeckDetailPage();
   }
   return LibraryPage();
 }

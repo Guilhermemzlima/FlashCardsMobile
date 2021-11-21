@@ -15,11 +15,11 @@ class RecentDecks extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Titles("Decks Recentes"),
-          ListItem(Items('Aprendendo Flutter Teste', '50 - Cartões', true)),
-          ListItem(Items('JavaScript Avançados', '150 - Cartões', false)),
-          ListItem(Items('Meu primeiro Deck', '40 - Cartões', true)),
-          ListItem(Items('Aprendendo Flutter Teste', '50 - Cartões', true)),
-          ListItem(Items('JavaScript Avançados', '150 - Cartões', false)),
+          ListItem(ListItemProperties('Aprendendo Flutter Teste', '50 - Cartões', true)),
+          ListItem(ListItemProperties('JavaScript Avançados', '150 - Cartões', false)),
+          ListItem(ListItemProperties('Meu primeiro Deck', '40 - Cartões', true)),
+          ListItem(ListItemProperties('Aprendendo Flutter Teste', '50 - Cartões', true)),
+          ListItem(ListItemProperties('JavaScript Avançados', '150 - Cartões', false)),
         ],
       ),
     );
