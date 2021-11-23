@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flip_card/flip_card.dart';
-import 'package:flashcard/ui_style_guides/ui_style_guides.dart';
 
 class FlashCard extends StatelessWidget implements PreferredSizeWidget {
   const FlashCard(

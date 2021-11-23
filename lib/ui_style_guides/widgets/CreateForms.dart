@@ -16,8 +16,8 @@ class CreateForms extends StatelessWidget {
           children: [
             MyForm(_controllerPlaylistName, 'NOME DA PLAYLIST', 1, 30,
                 TextInputType.text, false),
-            MyForm(_controllerPlaylistDescription, 'DESCRIÇÃO(opcional)', 6, 150,
-                TextInputType.text, true),
+            MyForm(_controllerPlaylistDescription, 'DESCRIÇÃO(opcional)', 6,
+                150, TextInputType.text, true),
             ElevatedButton(
               child: Text("Confirmar"),
               onPressed: () => _createPlaylist(context),
@@ -29,13 +29,15 @@ class CreateForms extends StatelessWidget {
   }
 
   void _createPlaylist(BuildContext context) {
-    final String playlistName = _controllerPlaylistName.text;
-    final String playlistDescription = _controllerPlaylistDescription.text;
-
-    if ((playlistName != '') && playlistDescription != '') {
-      final newListItem = ListItemProperties(playlistName, playlistDescription, false);
-      print('$newListItem');
-      Navigator.pop(context,newListItem);
-    }
+    // final String playlistName = _controllerPlaylistName.text;
+    // final String playlistDescription = _controllerPlaylistDescription.text;
+    print("Não entendi oq tava aqui");
+    // if ((playlistName != '') && playlistDescription != '') {
+    //   final newListItem = ListItemProperties(
+    //       title: playlistName,
+    //       subtitle: playlistDescription,
+    //       isVerified: false);
+    //   print('$newListItem');
+    //   Navigator.pop(context, newListItem);
   }
 }
