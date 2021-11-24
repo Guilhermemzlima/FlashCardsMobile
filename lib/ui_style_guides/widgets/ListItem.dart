@@ -1,5 +1,7 @@
+import 'package:flashcard/infrastructure/models/deck.dart';
 import 'package:flutter/material.dart';
 import 'package:flashcard/ui_style_guides/ui_style_guides.dart';
+import 'package:shimmer/shimmer.dart';
 
 class ListItem extends StatelessWidget {
   final String title;
@@ -16,6 +18,28 @@ class ListItem extends StatelessWidget {
       required this.isVerified,
       required this.onTap})
       : super(key: key);
+
+  static ListItem fromDeck(Deck deck, Function() onTap) {
+    return ListItem(
+      title: deck.name,
+      subTitle: deck.description,
+      imageURL: deck.imageURL,
+      isVerified: false,
+      onTap: onTap,
+    );
+  }
+
+  static Widget getShimmer() {
+    return Shimmer.fromColors(
+        child: ListItem(
+            onTap: () => null,
+            imageURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png",
+            isVerified: false,
+            title: "Shimmer",
+            subTitle: "This is a shimmer"),
+        baseColor: mainColor,
+        highlightColor: hoverMainColor);
+  }
 
   @override
   Widget build(BuildContext context) {

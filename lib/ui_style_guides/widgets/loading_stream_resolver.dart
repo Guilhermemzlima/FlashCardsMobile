@@ -17,6 +17,7 @@ class LoadingStreamResolver<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return stream.toBuild(onSuccess: onSuccess, onLoading: _buildLoadingScreen(), onError: onError);
   }
 

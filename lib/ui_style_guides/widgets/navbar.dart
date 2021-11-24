@@ -1,4 +1,5 @@
 import 'package:flashcard/infrastructure/routes/routes.dart';
+import 'package:flashcard/presentation/playlist/pages/playlist_detail_page.dart';
 import 'package:flashcard/ui_style_guides/my_colors/my_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +20,7 @@ class Navbar extends StatelessWidget {
         BottomNavigationBarItem(label: "Busca", icon: Icon(Icons.search))),
     NavbarItem(libraryRoute,
         BottomNavigationBarItem(label: "Biblioteca", icon: Icon(Icons.book))),
-    NavbarItem(deckDetailRoute,
+    NavbarItem(playlistDetailRoute,
         BottomNavigationBarItem(label: "Perfil", icon: Icon(Icons.person))),
   ];
 
@@ -33,7 +34,7 @@ class Navbar extends StatelessWidget {
       currentIndex: currentIndex,
       items: _navbarItems.map((e) => e.navigationBarItem).toList(),
       onTap: (int index) =>
-          Navigator.pushNamed(context, _navbarItems[index].route),
+          Navigator.pushNamed(context, _navbarItems[index].route, arguments: PlaylistDetailPageArguments(playlistId: "619d59742eb65b814bb41122")),
     );
   }
 }

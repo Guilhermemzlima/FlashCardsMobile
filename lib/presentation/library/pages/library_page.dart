@@ -1,4 +1,5 @@
 import 'package:flashcard/infrastructure/models/deck.dart';
+import 'package:flashcard/infrastructure/models/playlist.dart';
 import 'package:flashcard/infrastructure/routes/routes.dart';
 import 'package:flashcard/presentation/deck/pages/deck_detail_page.dart';
 import 'package:flashcard/presentation/library/bloc/library_bloc.dart';
@@ -26,6 +27,7 @@ class _LibraryPageState extends State<LibraryPage> {
     super.initState();
     _bloc = widget._libraryBloc;
     _bloc.buildDeckList();
+    _bloc.buildPlaylists();
   }
 
   @override
@@ -55,7 +57,11 @@ class _LibraryPageState extends State<LibraryPage> {
           body: TabBarView(
             children: [
               Center(
-                child: CardListWidget(),
+                child: LoadingStreamResolver<List<Playlist>>(
+                  stream: _bloc.myPlaylists,
+                  onSuccess: (List<Playlist> playlists) => ImageCardListWidget.fromPlaylists(playlists, context),
+                  onError: Text("Failed"),
+                ),
               ),
               Center(
                 child: LoadingStreamResolver<List<Deck>>(

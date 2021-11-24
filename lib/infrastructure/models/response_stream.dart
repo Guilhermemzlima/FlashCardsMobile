@@ -14,6 +14,7 @@ class ResponseStream<T> {
   T value() => _subject.value;
 
   void addError(Object? value) {
+    print(value);
     if (value != null) {
       _subject.addError(value);
     }

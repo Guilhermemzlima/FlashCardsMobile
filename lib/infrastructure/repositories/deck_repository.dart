@@ -12,6 +12,10 @@ class DeckRepository {
     return Deck.fromJson(json.decode(response.body));
   }
 
+  Future<List<Deck>> getDeckByIdBatch(List<String> deckIds) async {
+    return await Future.wait(deckIds.map((id) => getDeckById(id)));
+  }
+
   Future<List<Deck>> getMyDeckList() async {
     Response response = await _deckService.getMyDecks();
     return _parseDeckList(response);
