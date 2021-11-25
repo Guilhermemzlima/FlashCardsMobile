@@ -1,4 +1,4 @@
-import 'package:flashcard/presentation/home/pages/Home.dart';
+import 'package:flashcard/presentation/home/pages/home_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

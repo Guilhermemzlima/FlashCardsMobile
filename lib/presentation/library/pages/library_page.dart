@@ -77,29 +77,32 @@ class _LibraryPageState extends State<LibraryPage> {
   }
 
   Widget _buildDeckTab(List<Deck> decks) {
-    return Container(
-      padding: EdgeInsets.symmetric(
-        vertical: 40,
-        horizontal: 30,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Titles("Meus Decks"),
-          Column(
-            children: decks
-                .map((deck) => ListItem(
-                    title: deck.name,
-                    subTitle: deck.description,
-                    imageURL: deck.imageURL,
-                    isVerified: false,
-                    onTap: () => Navigator.pushNamed(context, deckDetailRoute,
-                        arguments: DeckDetailPageArguments(deckId: deck.id))))
-                .toList(),
-          )
-        ],
-      ),
+    return ListView(
+      children: [
+        Container(
+          padding: EdgeInsets.symmetric(
+            vertical: 40,
+            horizontal: 30,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Titles("Meus Decks"),
+              Column(
+                children: decks
+                    .map((deck) => ListItem(
+                        title: deck.name,
+                        subTitle: deck.description,
+                        imageURL: deck.imageURL,
+                        isVerified: false,
+                        onTap: () => Navigator.pushNamed(context, deckDetailRoute,
+                            arguments: DeckDetailPageArguments(deckId: deck.id))))
+                    .toList(),
+              )
+            ],
+          ),
+        ),
+      ],
     );
-    ;
   }
 }

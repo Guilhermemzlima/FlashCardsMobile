@@ -2,7 +2,6 @@ import 'package:flashcard/infrastructure/models/deck.dart';
 import 'package:flashcard/infrastructure/models/playlist.dart';
 import 'package:flashcard/infrastructure/routes/routes.dart';
 import 'package:flashcard/presentation/deck/pages/deck_detail_page.dart';
-import 'package:flashcard/presentation/deck/widgets/CardListItem.dart';
 import 'package:flashcard/presentation/playlist/bloc/playlist_detail_bloc.dart';
 import 'package:flashcard/ui_style_guides/widgets/loading_stream_resolver.dart';
 import 'package:flashcard/ui_style_guides/widgets/navbar.dart';

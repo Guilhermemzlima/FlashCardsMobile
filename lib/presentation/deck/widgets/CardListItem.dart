@@ -1,18 +1,30 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flashcard/ui_style_guides/ui_style_guides.dart';
+import 'package:shimmer/shimmer.dart';
 
 class CardListItem extends StatelessWidget {
-
   final String cardText;
   final Color cardColor;
 
-  const CardListItem({Key? key, required this.cardText, required this.cardColor}) : super(key: key);
+  const CardListItem(
+      {Key? key, required this.cardText, required this.cardColor})
+      : super(key: key);
+
+  static Widget getShimmer() {
+    return Shimmer.fromColors(
+        child: CardListItem(
+          cardColor: mainColor,
+          cardText: "This is a shimmer",
+        ),
+        baseColor: mainColor,
+        highlightColor: hoverMainColor);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 20, right: 20, bottom: 20),
+      margin: EdgeInsets.only(left: 20, right: 20, bottom: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -30,11 +42,9 @@ class CardListItem extends StatelessWidget {
                     print('List tapped.');
                   },
                   child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 25, horizontal: 20),
-                    child: Text(cardText, style: TextStyle(
-                     fontSize: 22
-                    ))
-                  ),
+                      padding:
+                          EdgeInsets.symmetric(vertical: 25, horizontal: 20),
+                      child: Text(cardText, style: TextStyle(fontSize: 22))),
                 ),
               )),
         ],

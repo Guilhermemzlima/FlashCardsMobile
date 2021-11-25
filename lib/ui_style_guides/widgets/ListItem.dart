@@ -22,7 +22,7 @@ class ListItem extends StatelessWidget {
   static ListItem fromDeck(Deck deck, Function() onTap) {
     return ListItem(
       title: deck.name,
-      subTitle: deck.description,
+      subTitle: "${deck.description} - ${deck.cardsCount} card(s)",
       imageURL: deck.imageURL,
       isVerified: false,
       onTap: onTap,

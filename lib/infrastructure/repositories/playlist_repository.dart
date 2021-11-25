@@ -1,8 +1,6 @@
 import 'dart:convert';
 
-import 'package:flashcard/infrastructure/models/deck.dart';
 import 'package:flashcard/infrastructure/models/playlist.dart';
-import 'package:flashcard/infrastructure/services/deck_service.dart';
 import 'package:flashcard/infrastructure/services/playlist_service.dart';
 import 'package:http/http.dart';
 
@@ -18,7 +16,6 @@ class PlaylistRepository {
     Response response = await _playlistService.getMyPlaylists();
     return _parsePlaylistList(response);
   }
-
 
   List<Playlist> _parsePlaylistList(Response response) {
     List body = json.decode(response.body);
