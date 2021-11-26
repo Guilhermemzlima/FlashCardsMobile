@@ -21,6 +21,11 @@ class DeckRepository {
     return _parseDeckList(response);
   }
 
+  Future<List<Deck>> getRecentDeckList() async {
+    Response response = await _deckService.getRecentDecks();
+    return _parseDeckList(response);
+  }
+
 
   List<Deck> _parseDeckList(Response response) {
     List body = json.decode(response.body);

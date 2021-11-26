@@ -59,7 +59,8 @@ class _LibraryPageState extends State<LibraryPage> {
               Center(
                 child: LoadingStreamResolver<List<Playlist>>(
                   stream: _bloc.myPlaylists,
-                  onSuccess: (List<Playlist> playlists) => ImageCardListWidget.fromPlaylists(playlists, context),
+                  onSuccess: (List<Playlist> playlists) =>
+                      ImageCardListWidget.fromPlaylists(playlists, context),
                   onError: Text("Failed"),
                 ),
               ),
@@ -82,23 +83,24 @@ class _LibraryPageState extends State<LibraryPage> {
         Container(
           padding: EdgeInsets.symmetric(
             vertical: 40,
-            horizontal: 30,
+            horizontal: 5,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Titles("Meus Decks"),
-              Column(
-                children: decks
-                    .map((deck) => ListItem(
-                        title: deck.name,
-                        subTitle: deck.description,
-                        imageURL: deck.imageURL,
-                        isVerified: false,
-                        onTap: () => Navigator.pushNamed(context, deckDetailRoute,
-                            arguments: DeckDetailPageArguments(deckId: deck.id))))
-                    .toList(),
-              )
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: Titles("Meus Decks"),
+              ),
+              ...decks
+                  .map((deck) => ListItem(
+                      title: deck.name,
+                      subTitle: deck.description,
+                      imageURL: deck.imageURL,
+                      isVerified: false,
+                      onTap: () => Navigator.pushNamed(context, deckDetailRoute,
+                          arguments: DeckDetailPageArguments(deckId: deck.id))))
+                  .toList(),
             ],
           ),
         ),

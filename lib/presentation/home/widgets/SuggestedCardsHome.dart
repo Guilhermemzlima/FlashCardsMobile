@@ -1,8 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flashcard/ui_style_guides/ui_style_guides.dart';
+import 'package:shimmer/shimmer.dart';
 
-class SuggestedCardsHome extends StatelessWidget {
-  const SuggestedCardsHome({Key? key}) : super(key: key);
+class SuggestedPlaylistCard extends StatelessWidget {
+  final String imageURL;
+  final Function() onTap;
+
+  const SuggestedPlaylistCard(
+      {Key? key, required this.imageURL, required this.onTap})
+      : super(key: key);
+
+  static Widget getShimmer() {
+    return Shimmer.fromColors(
+      child: SuggestedPlaylistCard(
+        onTap: () => null,
+        imageURL: "",
+      ),
+      baseColor: mainColor,
+      highlightColor: hoverMainColor,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,14 +32,12 @@ class SuggestedCardsHome extends StatelessWidget {
           borderRadius: BorderRadius.circular(25),
           hoverColor: hoverMainColor,
           splashColor: actionMainColor,
-          onTap: () {
-            print('Card tapped.');
-          },
+          onTap: onTap,
           child: SizedBox(
             width: 280,
             height: 280,
             child: Center(
-              child: FlutterLogo(size: 150),
+              child: Image.network(imageURL, width: 200, height: 200,),
             ),
           ),
         ));

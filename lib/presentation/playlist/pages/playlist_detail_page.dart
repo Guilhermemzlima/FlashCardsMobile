@@ -61,22 +61,25 @@ class _PlaylistDetailPageState extends State<PlaylistDetailPage> {
       children: [
         Container(
           padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
-          child: Row(children: [
-            Container(
-              padding: EdgeInsets.only(right: 20),
-              child: Image.network(playlist.imageURL, height: 100, width: 100),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  playlist.name,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-                ),
-                Text(playlist.description)
-              ],
-            )
-          ]),
+          child: Row(
+            children: [
+              Container(
+                padding: EdgeInsets.only(right: 20),
+                child:
+                    Image.network(playlist.imageURL, height: 100, width: 100),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    playlist.name,
+                    style: titleStyleBold,
+                  ),
+                  Text(playlist.description)
+                ],
+              )
+            ],
+          ),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,

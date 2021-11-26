@@ -6,7 +6,6 @@ export 'widgets/Titles.dart';
 export 'widgets/ListItem.dart';
 export 'widgets/RecentDecks.dart';
 export 'widgets/CardListWidget.dart';
-export 'widgets/SuggestedPlaylistsHome.dart';
-export 'widgets/SuggestedCardsHome.dart';
+export '../presentation/home/widgets/SuggestedCardsHome.dart';
 export 'widgets/CreateForms.dart';
 export 'widgets/MyForm.dart';

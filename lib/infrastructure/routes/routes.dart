@@ -2,7 +2,7 @@ import 'package:flashcard/presentation/deck/pages/deck_detail_page.dart';
 import 'package:flashcard/presentation/home/pages/home_page.dart';
 import 'package:flashcard/presentation/library/pages/library_page.dart';
 import 'package:flashcard/presentation/playlist/pages/playlist_detail_page.dart';
-import 'package:flashcard/presentation/search/pages/Search.dart';
+import 'package:flashcard/presentation/search/pages/search_page.dart';
 import 'package:flashcard/presentation/review/pages/%20review_page.dart';
 import 'package:flutter/material.dart';
 

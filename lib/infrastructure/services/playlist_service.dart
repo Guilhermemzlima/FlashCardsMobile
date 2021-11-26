@@ -8,4 +8,7 @@ class PlaylistService extends BaseService {
 
   Future<Response> getMyPlaylists() async =>
       await get(path: "flashcards/api/v1/playlists", params: {"limit": "10"});
+
+  Future<Response> getPlaylists() async =>
+      await get(path: "flashcards/api/v1/playlists/all", params: {"limit": "10"});
 }

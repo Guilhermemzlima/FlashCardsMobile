@@ -59,22 +59,26 @@ class _DeckDetailPageState extends State<DeckDetailPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 30),
               child: Row(children: [
                 Container(
                   padding: EdgeInsets.only(right: 20),
                   child: Image.network(deck.imageURL, height: 100, width: 100),
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      deck.name,
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-                    ),
-                    Text(deck.description)
-                  ],
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        deck.name,
+                        style: titleStyleBold,
+                      ),
+                      Text(
+                        deck.description,
+                        style: subTitleStyle,
+                      )
+                    ],
+                  ),
                 )
               ]),
             ),

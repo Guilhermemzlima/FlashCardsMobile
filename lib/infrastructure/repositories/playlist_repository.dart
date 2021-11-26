@@ -12,8 +12,13 @@ class PlaylistRepository {
     return Playlist.fromJson(json.decode(response.body));
   }
 
-  Future<List<Playlist>> getPlaylistList() async {
+  Future<List<Playlist>> getMyPlaylistList() async {
     Response response = await _playlistService.getMyPlaylists();
+    return _parsePlaylistList(response);
+  }
+
+  Future<List<Playlist>> getPlaylistList() async {
+    Response response = await _playlistService.getPlaylists();
     return _parsePlaylistList(response);
   }
 

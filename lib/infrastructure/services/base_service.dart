@@ -1,6 +1,6 @@
 import 'package:http/http.dart';
 
-const String _BASE_URL = "localhost:3000";
+const String _BASE_URL = "10.0.2.2:3000";
 
 class BaseService {
   Client _client = Client();
