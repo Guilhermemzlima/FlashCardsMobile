@@ -24,7 +24,7 @@ Widget _getRoute(RouteSettings settings) {
     case searchRoute:
       return SearchPage();
     case reviewRoute:
-      return ReviewPage();
+      return ReviewPage(arguments: getArg(settings));
     case deckDetailRoute:
       return DeckDetailPage(getArg(settings));
     case playlistDetailRoute:

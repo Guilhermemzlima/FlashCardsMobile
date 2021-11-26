@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flip_card/flip_card.dart';
 
-class FlashCard extends StatelessWidget implements PreferredSizeWidget {
+class FlashCard extends StatelessWidget {
   const FlashCard(
       {required this.color, required this.frontText, required this.backText});
 
@@ -11,21 +11,28 @@ class FlashCard extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FlipCard(
-      fill: Fill.fillBack,
-      direction: FlipDirection.HORIZONTAL,
-      front: Container(
-        height: 746,
-        color: this.color,
-        child: Center(child: Text(this.frontText)),
-      ),
-      back: Container(
-        color: this.color,
-        child: Center(child: Text(this.backText)),
+    return Expanded(
+      child: FlipCard(
+        fill: Fill.fillBack,
+        direction: FlipDirection.HORIZONTAL,
+        front: Container(
+          color: this.color,
+          child: Center(child: Text(this.frontText)),
+        ),
+        back: Container(
+          color: this.color,
+          child: Center(child: Text(this.backText)),
+        ),
       ),
     );
   }
+}
 
-  @override
-  Size get preferredSize => Size.fromHeight(200);
+class FlashCardContent {
+  final String frontText;
+  final String backText;
+  final Color color;
+
+  FlashCardContent(
+      {required this.frontText, required this.backText, required this.color});
 }
