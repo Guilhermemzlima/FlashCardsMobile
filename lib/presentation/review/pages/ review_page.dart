@@ -1,5 +1,7 @@
 import 'package:flashcard/infrastructure/models/review.dart';
+import 'package:flashcard/infrastructure/routes/routes.dart';
 import 'package:flashcard/presentation/review/bloc/review_bloc.dart';
+import 'package:flashcard/presentation/review/pages/review_results_page.dart';
 import 'package:flashcard/presentation/review/widgets/FlashCard.dart';
 import 'package:flashcard/ui_style_guides/ui_style_guides.dart';
 import 'package:flashcard/ui_style_guides/widgets/loading_stream_resolver.dart';
@@ -38,7 +40,7 @@ class _ReviewPageState extends State<ReviewPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         extendBodyBehindAppBar: false,
-        bottomNavigationBar: Navbar(Navbar.HOME_INDEX),
+        bottomNavigationBar: Navbar(Navbar.LIBRARY_INDEX),
         backgroundColor: backgroundColor,
         appBar: MyAppBar("Review"),
         body: LoadingStreamResolver(
@@ -69,7 +71,8 @@ class _ReviewPageState extends State<ReviewPage> {
             child: SwipeCards(
                 matchEngine: _matchEngine,
                 onStackFinished: () {
-                  print("Finished");
+                  Navigator.pushNamed(context, reviewResultsRoute,
+                      arguments: ReviewResultPageArgs(review.session.id));
                 },
                 itemBuilder: (BuildContext context, int index) {
                   final content = _swipeItems[index].content;
@@ -90,7 +93,7 @@ class _ReviewPageState extends State<ReviewPage> {
                 child: Padding(
                   padding: const EdgeInsets.only(right: 5.0),
                   child: ElevatedButton(
-                    onPressed: () => null,
+                    onPressed: () => _matchEngine.currentItem?.nope(),
                     style: ButtonStyle(
                         backgroundColor:
                             MaterialStateProperty.all(Colors.redAccent)),
@@ -111,7 +114,7 @@ class _ReviewPageState extends State<ReviewPage> {
               ),
               Expanded(
                 child: ElevatedButton(
-                    onPressed: () => null,
+                    onPressed: () => _matchEngine.currentItem?.like(),
                     style: ButtonStyle(
                         backgroundColor:
                             MaterialStateProperty.all(Colors.green)),

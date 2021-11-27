@@ -9,6 +9,8 @@ class ReviewBloc {
   ResponseStream<Review> myReview = ResponseStream<Review>();
 
   ResponseStream<Session> _sessionRightWrong = ResponseStream<Session>();
+  
+  ResponseStream<Session> sessionResult = ResponseStream<Session>();
 
   void buildSessionByDeckId(String deckId) =>
       myReview.handleFuture(_reviewRepository.reviewDeck(deckId));
@@ -21,4 +23,6 @@ class ReviewBloc {
 
   void reviewCardWrong(String sessionId, String cardId) => _sessionRightWrong
       .handleFuture(_reviewRepository.reviewCardWrong(sessionId, cardId));
+  
+  void buildSessionResultBySessionId(String sessionId) => sessionResult.handleFuture(_reviewRepository.getSessionBySessionId(sessionId));
 }

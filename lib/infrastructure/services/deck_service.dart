@@ -9,6 +9,12 @@ class DeckService extends BaseService {
   Future<Response> getMyDecks() async =>
       await get(path: "flashcards/api/v1/decks", params: {"limit": "10"});
 
+  Future<Response> getPopularDecks() async =>
+      await get(path: "flashcards/api/v1/decks/all", params: {"limit": "10"});
+
+  Future<Response> getEscapeDecks() async =>
+      await get(path: "flashcards/api/v1/decks/all", params: {"limit": "4"});
+
   Future<Response> getRecentDecks() async =>
       await get(path: "flashcards/api/v1/decks/recent/", params: {"limit": "10"});
 }

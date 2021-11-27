@@ -8,8 +8,8 @@ class ReviewService extends BaseService {
       );
 
   Future<Response> reviewPlaylist(String playlistId) async => await get(
-    path: "flashcards/api/v1/playlists/$playlistId/review",
-  );
+        path: "flashcards/api/v1/playlists/$playlistId/review",
+      );
 
   Future<Response> reviewCardRight(String sessionId, String cardId) async =>
       await post(
@@ -20,4 +20,7 @@ class ReviewService extends BaseService {
       await post(
           path: "flashcards/api/v1/review/$sessionId/wrong",
           body: {"_id": cardId});
+
+  Future<Response> getSessionBySessionId(String sessionId) async =>
+      await get(path: "flashcards/api/v1/review/$sessionId");
 }

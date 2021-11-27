@@ -1,3 +1,4 @@
+import 'package:flashcard/infrastructure/models/deck.dart';
 import 'package:flashcard/infrastructure/models/search_result.dart';
 import 'package:flashcard/infrastructure/routes/routes.dart';
 import 'package:flashcard/presentation/deck/pages/deck_detail_page.dart';
@@ -23,6 +24,8 @@ class _SearchPageState extends State<SearchPage> {
   void initState() {
     super.initState();
     _bloc = widget.bloc;
+    _bloc.buildPopularDecks();
+    _bloc.buildEscapeDecks();
   }
 
   @override
@@ -79,10 +82,8 @@ class _SearchPageState extends State<SearchPage> {
                                                   playlistId: searchResult.id))
                                       : Navigator.pushNamed(
                                           context, deckDetailRoute,
-                                          arguments:
-                                              DeckDetailPageArguments(
-                                                  deckId:
-                                                      searchResult.id))))
+                                          arguments: DeckDetailPageArguments(
+                                              deckId: searchResult.id))))
                               .toList(),
                         ),
                         onLoading: Column(
@@ -91,8 +92,70 @@ class _SearchPageState extends State<SearchPage> {
                         ),
                         onError: Text("Failed"),
                       )
-                    : SizedBox.shrink())
+                    : _buildSuggestedAndPopularStuff())
           ],
         ));
+  }
+
+  Widget _buildSuggestedAndPopularStuff() {
+    return Container(
+      padding: EdgeInsets.symmetric(
+        vertical: 10,
+        horizontal: 5,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 10.0),
+            child: Titles("Fugir da rotina"),
+          ),
+          _bloc.escapeDecks.toBuild(
+              onSuccess: (List<Deck> decks) => Column(
+                  children: decks
+                      .map(
+                        (deck) => ListItem.fromDeck(
+                          deck,
+                          () => Navigator.pushNamed(
+                            context,
+                            deckDetailRoute,
+                            arguments: DeckDetailPageArguments(deckId: deck.id),
+                          ),
+                        ),
+                      )
+                      .toList()),
+              onLoading: Column(
+                  children: List.generate(
+                4,
+                (_) => ListItem.getShimmer(),
+              )),
+              onError: Text("Failed")),
+          Padding(
+            padding: const EdgeInsets.only(top: 20, left: 10.0),
+            child: Titles("Popular"),
+          ),
+          _bloc.popularDecks.toBuild(
+              onSuccess: (List<Deck> decks) => Column(
+                  children: decks
+                      .map(
+                        (deck) => ListItem.fromDeck(
+                          deck,
+                          () => Navigator.pushNamed(
+                            context,
+                            deckDetailRoute,
+                            arguments: DeckDetailPageArguments(deckId: deck.id),
+                          ),
+                        ),
+                      )
+                      .toList()),
+              onLoading: Column(
+                  children: List.generate(
+                10,
+                (_) => ListItem.getShimmer(),
+              )),
+              onError: Text("Failed"))
+        ],
+      ),
+    );
   }
 }

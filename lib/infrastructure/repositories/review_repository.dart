@@ -27,4 +27,9 @@ class ReviewRepository {
     Response response = await _service.reviewCardWrong(sessionId, cardId);
     return Session.fromJson(json.decode(response.body));
   }
+
+  Future<Session> getSessionBySessionId(String sessionId) async {
+    Response response = await _service.getSessionBySessionId(sessionId);
+    return Session.fromJson(json.decode(response.body));
+  }
 }

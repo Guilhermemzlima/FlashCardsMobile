@@ -21,8 +21,18 @@ class DeckRepository {
     return _parseDeckList(response);
   }
 
+  Future<List<Deck>> getPopularDecks() async {
+    Response response = await _deckService.getPopularDecks();
+    return _parseDeckList(response);
+  }
+
   Future<List<Deck>> getRecentDeckList() async {
     Response response = await _deckService.getRecentDecks();
+    return _parseDeckList(response);
+  }
+
+  Future<List<Deck>> getEscapeDecks() async {
+    Response response = await _deckService.getEscapeDecks();
     return _parseDeckList(response);
   }
 

@@ -1,7 +1,9 @@
 import 'package:flashcard/infrastructure/models/card.dart';
 import 'package:flashcard/infrastructure/models/deck.dart';
+import 'package:flashcard/infrastructure/routes/routes.dart';
 import 'package:flashcard/presentation/deck/bloc/deck_detail_bloc.dart';
 import 'package:flashcard/presentation/deck/widgets/CardListItem.dart';
+import 'package:flashcard/presentation/review/pages/%20review_page.dart';
 import 'package:flashcard/ui_style_guides/widgets/loading_stream_resolver.dart';
 import 'package:flashcard/ui_style_guides/widgets/navbar.dart';
 import 'package:flutter/material.dart';
@@ -88,7 +90,8 @@ class _DeckDetailPageState extends State<DeckDetailPage> {
                 Column(
                   children: [
                     ElevatedButton(
-                      onPressed: () => print("Button tapped"),
+                      onPressed: () => Navigator.pushNamed(context, reviewRoute,
+                          arguments: ReviewPageArguments(deckId: deck.id)),
                       child: Padding(
                         padding:
                             EdgeInsets.symmetric(vertical: 20, horizontal: 40),
