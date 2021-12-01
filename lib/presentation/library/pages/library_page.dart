@@ -3,6 +3,7 @@ import 'package:flashcard/infrastructure/models/playlist.dart';
 import 'package:flashcard/infrastructure/routes/routes.dart';
 import 'package:flashcard/presentation/deck/pages/deck_detail_page.dart';
 import 'package:flashcard/presentation/library/bloc/library_bloc.dart';
+import 'package:flashcard/ui_style_guides/widgets/floating_create_button.dart';
 import 'package:flashcard/ui_style_guides/widgets/loading_stream_resolver.dart';
 import 'package:flashcard/ui_style_guides/widgets/navbar.dart';
 import 'package:flutter/cupertino.dart';
@@ -38,6 +39,7 @@ class _LibraryPageState extends State<LibraryPage> {
       bottomNavigationBar: Navbar(Navbar.LIBRARY_INDEX),
       backgroundColor: backgroundColor,
       appBar: MyAppBar("Biblioteca"),
+      floatingActionButton: FloatingCreateButton(),
       body: DefaultTabController(
         initialIndex: 1,
         length: 2,

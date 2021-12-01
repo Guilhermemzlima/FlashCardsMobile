@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flashcard/infrastructure/models/create_playlist_payload.dart';
 import 'package:flashcard/infrastructure/models/playlist.dart';
 import 'package:flashcard/infrastructure/services/playlist_service.dart';
 import 'package:http/http.dart';
@@ -20,6 +21,11 @@ class PlaylistRepository {
   Future<List<Playlist>> getPlaylistList() async {
     Response response = await _playlistService.getPlaylists();
     return _parsePlaylistList(response);
+  }
+
+  Future<Playlist> createPlaylist(CreatePlaylistPayload payload) async {
+    Response response = await _playlistService.createPlaylist(payload);
+    return Playlist.fromJson(json.decode(response.body));
   }
 
   List<Playlist> _parsePlaylistList(Response response) {

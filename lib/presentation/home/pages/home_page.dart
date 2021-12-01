@@ -4,8 +4,9 @@ import 'package:flashcard/infrastructure/models/playlist.dart';
 import 'package:flashcard/infrastructure/routes/routes.dart';
 import 'package:flashcard/presentation/deck/pages/deck_detail_page.dart';
 import 'package:flashcard/presentation/home/bloc/home_bloc.dart';
-import 'package:flashcard/presentation/playlist/pages/CreatePlaylist.dart';
+import 'package:flashcard/presentation/playlist/pages/create_playlist_page.dart';
 import 'package:flashcard/presentation/playlist/pages/playlist_detail_page.dart';
+import 'package:flashcard/ui_style_guides/widgets/floating_create_button.dart';
 import 'package:flashcard/ui_style_guides/widgets/navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flashcard/ui_style_guides/ui_style_guides.dart';
@@ -39,18 +40,7 @@ class HomePageState extends State<HomePage> {
       body: ListView(
         children: [_buildPlaylistCarousel(), _buildRecentDecks()],
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () {
-          final Future createPlaylistData =
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return CreatePlaylist();
-          }));
-          createPlaylistData.then((newListItem) {
-            debugPrint('$newListItem');
-          });
-        },
-      ),
+      floatingActionButton: FloatingCreateButton(),
     );
   }
 
