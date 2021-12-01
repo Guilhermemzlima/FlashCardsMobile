@@ -69,15 +69,17 @@ class _PlaylistDetailPageState extends State<PlaylistDetailPage> {
                 child:
                     Image.network(playlist.imageURL, height: 100, width: 100),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    playlist.name,
-                    style: titleStyleBold,
-                  ),
-                  Text(playlist.description)
-                ],
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      playlist.name,
+                      style: titleStyleBold,
+                    ),
+                    Text(playlist.description)
+                  ],
+                ),
               )
             ],
           ),

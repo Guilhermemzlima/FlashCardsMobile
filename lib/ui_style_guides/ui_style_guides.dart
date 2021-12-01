@@ -1,5 +1,6 @@
 export 'my_colors/my_colors.dart';
-export 'text_styles/text_styles.dart';
+export 'styles/text_styles.dart';
+export 'styles/button_styles.dart';
 
 export 'widgets/MyAppBar.dart';
 export 'widgets/Titles.dart';

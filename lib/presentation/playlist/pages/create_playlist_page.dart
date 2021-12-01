@@ -54,10 +54,11 @@ class _CreatePlaylistState extends State<CreatePlaylistPage> {
           Center(child: ImagePicker(imageURL: imageURL)),
           MyForm(_controllerPlaylistName, 'NOME DA PLAYLIST', 1, 30,
               TextInputType.text, false),
-          MyForm(_controllerPlaylistDescription, 'DESCRIÇÃO(opcional)', 6, 150,
+          MyForm(_controllerPlaylistDescription, 'DESCRIÇÃO', 6, 150,
               TextInputType.text, true),
           ElevatedButton(
             child: Text("Confirmar"),
+            style: confirmButtonStyle,
             onPressed: () => _createPlaylist(),
           )
         ],

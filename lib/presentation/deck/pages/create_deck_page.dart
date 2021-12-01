@@ -58,6 +58,7 @@ class _CreateDeckState extends State<CreateDeckPage> {
               TextInputType.text, true),
           ElevatedButton(
             child: Text("Confirmar"),
+            style: confirmButtonStyle,
             onPressed: () => _createDeck(),
           )
         ],
