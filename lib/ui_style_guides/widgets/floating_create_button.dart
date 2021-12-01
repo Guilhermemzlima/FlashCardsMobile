@@ -1,3 +1,4 @@
+import 'package:flashcard/presentation/deck/pages/create_deck_page.dart';
 import 'package:flashcard/presentation/playlist/pages/create_playlist_page.dart';
 import 'package:flashcard/ui_style_guides/my_colors/my_colors.dart';
 import 'package:flutter/cupertino.dart';
@@ -31,7 +32,10 @@ class FloatingCreateButton extends StatelessWidget {
                 ListTile(
                   leading: new Icon(Icons.my_library_books_rounded),
                   title: new Text('Criar Deck'),
-                  onTap: () => {},
+                  onTap: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (context) {
+                    return CreateDeckPage();
+                  })),
                 ),
               ],
             ),
