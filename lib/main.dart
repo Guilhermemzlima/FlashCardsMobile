@@ -1,4 +1,6 @@
 import 'package:flashcard/presentation/home/pages/home_page.dart';
+import 'package:flashcard/presentation/login/pages/login_page.dart';
+import 'package:flashcard/presentation/login/pages/registration_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +15,8 @@ class FlashCards extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'FlashCards',
-      home: HomePage(),
+      //home: LoginPage(),
+      home: LoginPage(),
       // routes: routes,
       onGenerateRoute: generateRoutes,
     );
