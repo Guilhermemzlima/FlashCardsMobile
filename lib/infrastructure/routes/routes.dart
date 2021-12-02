@@ -1,3 +1,4 @@
+import 'package:flashcard/presentation/card/pages/create_card_page.dart';
 import 'package:flashcard/presentation/deck/pages/deck_detail_page.dart';
 import 'package:flashcard/presentation/home/pages/home_page.dart';
 import 'package:flashcard/presentation/library/pages/library_page.dart';
@@ -22,6 +23,7 @@ const loginRoute = "/login";
 const recoverPasswordRoute = "/recoverPassword";
 const signupRoute = "/signup";
 const addDeckToPlaylistRoute = "/addDeckToPlaylist";
+const createCardRoute = "/createCard";
 
 T getArg<T>(RouteSettings settings) => settings.arguments as T;
 
@@ -49,6 +51,8 @@ Widget _getRoute(RouteSettings settings) {
       return RecoverPasswordPage();
     case addDeckToPlaylistRoute:
       return AddDeckToPlaylistPage(args: getArg(settings));
+    case createCardRoute:
+      return CreateCardPage(args: getArg(settings));
   }
   return LibraryPage();
 }

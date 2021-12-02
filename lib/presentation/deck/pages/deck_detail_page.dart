@@ -1,6 +1,7 @@
 import 'package:flashcard/infrastructure/models/card.dart';
 import 'package:flashcard/infrastructure/models/deck.dart';
 import 'package:flashcard/infrastructure/routes/routes.dart';
+import 'package:flashcard/presentation/card/pages/create_card_page.dart';
 import 'package:flashcard/presentation/deck/bloc/deck_detail_bloc.dart';
 import 'package:flashcard/presentation/deck/widgets/CardListItem.dart';
 import 'package:flashcard/presentation/review/pages/%20review_page.dart';
@@ -105,7 +106,9 @@ class _DeckDetailPageState extends State<DeckDetailPage> {
                     Padding(
                       padding: const EdgeInsets.only(top: 10, bottom: 40),
                       child: OutlinedButton(
-                        onPressed: () => print("Button tapped"),
+                        onPressed: () => Navigator.pushNamed(
+                            context, createCardRoute,
+                            arguments: CreateCardPageArgs(deckId: deck.id)),
                         child: Padding(
                           padding:
                               EdgeInsets.symmetric(vertical: 5, horizontal: 18),

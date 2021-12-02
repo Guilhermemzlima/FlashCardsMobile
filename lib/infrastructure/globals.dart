@@ -1,3 +1,3 @@
 class Globals {
-  static late String userId;
+  static late String userId = "Totoro";
 }

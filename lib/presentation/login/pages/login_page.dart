@@ -113,6 +113,8 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void onLogin() {
+    Navigator.pushNamedAndRemoveUntil(context, homeRoute, (route) => false);
+    return; //remover isso e a linha de cima pro login funcionar de verdade
     var email = controllerEmail.text;
     var password = controllerPassword.text;
     loading.value = true;

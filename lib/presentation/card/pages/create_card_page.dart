@@ -1,24 +1,35 @@
+import 'package:flashcard/infrastructure/models/card.dart';
+import 'package:flashcard/infrastructure/models/create_card_payload.dart';
 import 'package:flashcard/infrastructure/models/create_deck_payload.dart';
 import 'package:flashcard/infrastructure/models/deck.dart';
+import 'package:flashcard/infrastructure/repositories/card_repository.dart';
 import 'package:flashcard/infrastructure/routes/routes.dart';
-import 'package:flashcard/presentation/deck/bloc/create_deck_bloc.dart';
 import 'package:flashcard/presentation/deck/pages/deck_detail_page.dart';
-import 'package:flashcard/ui_style_guides/widgets/image_picker.dart';
 import 'package:flashcard/ui_style_guides/widgets/loader.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flashcard/ui_style_guides/ui_style_guides.dart';
 
+class CreateCardPageArgs {
+  final String deckId;
+
+  CreateCardPageArgs({required this.deckId});
+}
+
 class CreateCardPage extends StatefulWidget {
-  final CreateDeckBloc bloc = CreateDeckBloc();
+  final CardRepository repository = CardRepository();
+  final CreateCardPageArgs args;
+
+  CreateCardPage({Key? key, required this.args}) : super(key: key);
 
   @override
   _CreateCardState createState() => _CreateCardState();
 }
 
 class _CreateCardState extends State<CreateCardPage> {
-  late final CreateDeckBloc _bloc;
+  late final CardRepository _repository;
+  late final CreateCardPageArgs _args;
   final TextEditingController _controllerFront = TextEditingController();
   final TextEditingController _controllerBack = TextEditingController();
   final List colors = [
@@ -39,7 +50,8 @@ class _CreateCardState extends State<CreateCardPage> {
   @override
   void initState() {
     super.initState();
-    _bloc = widget.bloc;
+    _repository = widget.repository;
+    _args = widget.args;
   }
 
   @override
@@ -52,11 +64,11 @@ class _CreateCardState extends State<CreateCardPage> {
       body: ValueListenableBuilder<bool>(
           valueListenable: submitted,
           builder: (context, value, widget) =>
-              value ? Loader() : _createPlaylistForm()),
+              value ? Loader() : _createCardForm()),
     );
   }
 
-  Widget _createPlaylistForm() {
+  Widget _createCardForm() {
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.all(30),
@@ -70,8 +82,11 @@ class _CreateCardState extends State<CreateCardPage> {
               child: Titles('Cor do cartão'),
             ),
             Row(
-              children: List.generate(colors.length,
-                  (index) => Flexible(fit: FlexFit.tight,child: SquareColorPicker(colors[index]))),
+              children: List.generate(
+                  colors.length,
+                  (index) => Flexible(
+                      fit: FlexFit.tight,
+                      child: SquareColorPicker(colors[index]))),
             ),
             Padding(
               padding: EdgeInsets.only(top: 40),
@@ -96,17 +111,17 @@ class _CreateCardState extends State<CreateCardPage> {
     final String cardFront = _controllerFront.text;
     final String cardBack = _controllerBack.text;
     if ((cardFront != '') && cardBack != '') {
-      CreateDeckPayload payload = CreateDeckPayload(
-        name: cardFront,
-        description: cardBack,
-        imageURL: imageURL.value,
+      CreateCardPayload payload = CreateCardPayload(
+        front: cardFront,
+        back: cardBack,
       );
-      Future<Deck> responseFuture = _bloc.createDeck(payload);
+      Future<CardModel> responseFuture =
+          _repository.createCard(_args.deckId, payload);
       submitted.value = true;
       responseFuture.then((value) {
         Navigator.pop(context);
         Navigator.pushNamed(context, deckDetailRoute,
-            arguments: DeckDetailPageArguments(deckId: value.id));
+            arguments: DeckDetailPageArguments(deckId: _args.deckId));
       });
     }
   }
