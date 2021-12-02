@@ -21,6 +21,17 @@ class _CreateCardState extends State<CreateCardPage> {
   late final CreateDeckBloc _bloc;
   final TextEditingController _controllerFront = TextEditingController();
   final TextEditingController _controllerBack = TextEditingController();
+  final List colors = [
+    hoverMainColor,
+    red,
+    orange,
+    yellow,
+    lightGreen,
+    green,
+    blue,
+    purple,
+    pink
+  ];
   ValueNotifier<bool> submitted = ValueNotifier(false);
   ValueNotifier<String> imageURL = ValueNotifier(
       "https://storage.googleapis.com/flashcard-images/img_placeholder.png");
@@ -58,13 +69,17 @@ class _CreateCardState extends State<CreateCardPage> {
               alignment: Alignment.centerLeft,
               child: Titles('Cor do cartão'),
             ),
+            Row(
+              children: List.generate(colors.length,
+                  (index) => Flexible(fit: FlexFit.tight,child: SquareColorPicker(colors[index]))),
+            ),
             Padding(
               padding: EdgeInsets.only(top: 40),
               child: ElevatedButton(
-                onPressed: () => _createDeck(),
+                onPressed: () => _createCard(),
                 child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
-                  child: Text("CONFIRMAR",
+                  child: Text("CRIAR",
                       style: TextStyle(fontWeight: FontWeight.bold)),
                 ),
                 style: ButtonStyle(
@@ -77,13 +92,13 @@ class _CreateCardState extends State<CreateCardPage> {
     );
   }
 
-  void _createDeck() {
-    final String deckName = _controllerFront.text;
-    final String deckDescription = _controllerBack.text;
-    if ((deckName != '') && deckDescription != '') {
+  void _createCard() {
+    final String cardFront = _controllerFront.text;
+    final String cardBack = _controllerBack.text;
+    if ((cardFront != '') && cardBack != '') {
       CreateDeckPayload payload = CreateDeckPayload(
-        name: deckName,
-        description: deckDescription,
+        name: cardFront,
+        description: cardBack,
         imageURL: imageURL.value,
       );
       Future<Deck> responseFuture = _bloc.createDeck(payload);
