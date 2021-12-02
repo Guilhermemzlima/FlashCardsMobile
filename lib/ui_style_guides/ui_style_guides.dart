@@ -8,4 +8,5 @@ export 'widgets/ListItem.dart';
 export 'widgets/RecentDecks.dart';
 export 'widgets/CardListWidget.dart';
 export '../presentation/home/widgets/SuggestedCardsHome.dart';
+export '../presentation/card/widgets/square_color_picker.dart';
 export 'widgets/MyForm.dart';

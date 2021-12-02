@@ -1,3 +1,4 @@
+import 'package:flashcard/presentation/card/pages/create_card_page.dart';
 import 'package:flashcard/presentation/home/pages/home_page.dart';
 import 'package:flashcard/presentation/login/pages/login_page.dart';
 import 'package:flashcard/presentation/login/pages/registration_page.dart';
@@ -16,7 +17,7 @@ class FlashCards extends StatelessWidget {
     return MaterialApp(
       title: 'FlashCards',
       //home: LoginPage(),
-      home: LoginPage(),
+      home: CreateCardPage(),
       // routes: routes,
       onGenerateRoute: generateRoutes,
     );
