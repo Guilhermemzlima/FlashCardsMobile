@@ -17,11 +17,11 @@ class FlashCard extends StatelessWidget {
         direction: FlipDirection.HORIZONTAL,
         front: Container(
           color: this.color,
-          child: Center(child: Text(this.frontText)),
+          child: Center(child: Text(this.frontText, maxLines: 5,)),
         ),
         back: Container(
           color: this.color,
-          child: Center(child: Text(this.backText)),
+          child: Center(child: Text(this.backText, maxLines: 5,)),
         ),
       ),
     );

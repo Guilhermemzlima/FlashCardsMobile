@@ -25,17 +25,27 @@ class FloatingCreateButton extends StatelessWidget {
                 ListTile(
                     leading: new Icon(Icons.video_library),
                     title: new Text('Criar Playlist'),
-                    onTap: () => Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return CreatePlaylistPage();
-                        }))),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return CreatePlaylistPage();
+                          },
+                        ),
+                      );
+                    }),
                 ListTile(
                   leading: new Icon(Icons.my_library_books_rounded),
                   title: new Text('Criar Deck'),
-                  onTap: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) {
-                    return CreateDeckPage();
-                  })),
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return CreateDeckPage();
+                    }));
+                  },
                 ),
               ],
             ),

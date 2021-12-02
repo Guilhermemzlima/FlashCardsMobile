@@ -1,6 +1,10 @@
 import 'package:flashcard/presentation/deck/pages/deck_detail_page.dart';
 import 'package:flashcard/presentation/home/pages/home_page.dart';
 import 'package:flashcard/presentation/library/pages/library_page.dart';
+import 'package:flashcard/presentation/login/pages/recover_password_page.dart';
+import 'package:flashcard/presentation/login/pages/login_page.dart';
+import 'package:flashcard/presentation/login/pages/registration_page.dart';
+import 'package:flashcard/presentation/playlist/pages/add_deck_to_playlist_page.dart';
 import 'package:flashcard/presentation/playlist/pages/playlist_detail_page.dart';
 import 'package:flashcard/presentation/review/pages/review_results_page.dart';
 import 'package:flashcard/presentation/search/pages/search_page.dart';
@@ -14,6 +18,10 @@ const reviewRoute = "/review";
 const deckDetailRoute = "/deckDetail";
 const playlistDetailRoute = "/playlistDetailRoute";
 const reviewResultsRoute = "/reviewResults";
+const loginRoute = "/login";
+const recoverPasswordRoute = "/recoverPassword";
+const signupRoute = "/signup";
+const addDeckToPlaylistRoute = "/addDeckToPlaylist";
 
 T getArg<T>(RouteSettings settings) => settings.arguments as T;
 
@@ -33,6 +41,14 @@ Widget _getRoute(RouteSettings settings) {
       return PlaylistDetailPage(getArg(settings));
     case reviewResultsRoute:
       return ReviewResultsPage(args: getArg(settings));
+    case signupRoute:
+      return RegistrationPage();
+    case loginRoute:
+      return LoginPage();
+    case recoverPasswordRoute:
+      return RecoverPasswordPage();
+    case addDeckToPlaylistRoute:
+      return AddDeckToPlaylistPage(args: getArg(settings));
   }
   return LibraryPage();
 }

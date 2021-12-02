@@ -3,6 +3,7 @@ import 'package:flashcard/infrastructure/models/playlist.dart';
 import 'package:flashcard/infrastructure/routes/routes.dart';
 import 'package:flashcard/presentation/deck/pages/deck_detail_page.dart';
 import 'package:flashcard/presentation/playlist/bloc/playlist_detail_bloc.dart';
+import 'package:flashcard/presentation/playlist/pages/add_deck_to_playlist_page.dart';
 import 'package:flashcard/presentation/review/pages/%20review_page.dart';
 import 'package:flashcard/ui_style_guides/widgets/loading_stream_resolver.dart';
 import 'package:flashcard/ui_style_guides/widgets/navbar.dart';
@@ -57,8 +58,7 @@ class _PlaylistDetailPageState extends State<PlaylistDetailPage> {
   Widget _buildPlaylistDetailsPage(Playlist playlist) {
     _bloc
         .buildDeckList(playlist.decks != null ? playlist.decks! : List.empty());
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return ListView(
       children: [
         Container(
           padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
@@ -75,6 +75,7 @@ class _PlaylistDetailPageState extends State<PlaylistDetailPage> {
                   children: [
                     Text(
                       playlist.name,
+                      maxLines: 3,
                       style: titleStyleBold,
                     ),
                     Text(playlist.description)
@@ -103,7 +104,10 @@ class _PlaylistDetailPageState extends State<PlaylistDetailPage> {
                 Padding(
                   padding: const EdgeInsets.only(top: 10, bottom: 40),
                   child: OutlinedButton(
-                    onPressed: () => print("Button tapped"),
+                    onPressed: () => Navigator.pushNamed(
+                        context, addDeckToPlaylistRoute,
+                        arguments:
+                            AddDeckToPlaylistArgs(playlistId: playlist.id)),
                     child: Padding(
                       padding:
                           EdgeInsets.symmetric(vertical: 5, horizontal: 18),

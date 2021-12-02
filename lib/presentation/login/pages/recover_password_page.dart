@@ -1,16 +1,10 @@
-import 'package:flashcard/infrastructure/routes/routes.dart';
 import 'package:flashcard/presentation/login/widgets/my_password_form.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flashcard/ui_style_guides/ui_style_guides.dart';
 
-class RegistrationPage extends StatefulWidget {
-  @override
-  _RegistrationPageState createState() => _RegistrationPageState();
-}
-
-class _RegistrationPageState extends State<RegistrationPage> {
+class RecoverPasswordPage extends StatelessWidget {
   final TextEditingController controllerUsername = TextEditingController();
   final TextEditingController controllerEmail = TextEditingController();
   final TextEditingController controllerPassword = TextEditingController();
@@ -18,19 +12,16 @@ class _RegistrationPageState extends State<RegistrationPage> {
       TextEditingController();
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
         extendBody: true,
         backgroundColor: backgroundColor,
-        body: SingleChildScrollView(child: _buildRegistrationPage()));
+        body: Container(
+          child: _buildRecoverPassword(),
+        ));
   }
 
-  Widget _buildRegistrationPage() {
+  Widget _buildRecoverPassword() {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 80, horizontal: 20),
       child: Column(
@@ -47,8 +38,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
               children: [
                 MyForm(controllerUsername, 'NOME COMPLETO', 1, 30,
                     TextInputType.text, false),
-                MyForm(controllerEmail, 'EMAIL', 1, 30,
-                    TextInputType.emailAddress, false),
+                MyForm(
+                    controllerEmail, 'EMAIL', 1, 30, TextInputType.text, false),
                 MyPasswordForm(controllerPassword, 'SENHA', 1, 30,
                     TextInputType.text, false, true),
                 MyPasswordForm(
@@ -65,15 +56,15 @@ class _RegistrationPageState extends State<RegistrationPage> {
           Padding(
             padding: EdgeInsets.symmetric(vertical: 40),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
                   padding: EdgeInsets.only(right: 10),
                   child: ElevatedButton(
-                    onPressed: () => Navigator.pushNamed(context, loginRoute),
+                    onPressed: () => print('VOLTA PAR O LOGIN'),
                     child: Padding(
                       padding:
-                          EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+                          EdgeInsets.symmetric(vertical: 20, horizontal: 40),
                       child: Text("CANCELAR", style: subTitleStyleBold),
                     ),
                     style: ButtonStyle(
@@ -85,7 +76,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 ElevatedButton(
                   onPressed: () => print('CRIA USUARIO'),
                   child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
                     child: Text("CADASTRAR", style: subTitleStyleBoldWhite),
                   ),
                   style: ButtonStyle(

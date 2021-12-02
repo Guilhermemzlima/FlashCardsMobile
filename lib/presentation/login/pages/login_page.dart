@@ -1,28 +1,32 @@
+import 'package:flashcard/infrastructure/routes/routes.dart';
+import 'package:flashcard/presentation/login/widgets/my_password_form.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flashcard/ui_style_guides/ui_style_guides.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        extendBody: true,
-        backgroundColor: backgroundColor,
-        body: Container(
-          child: CreateLogin(),
-        ));
-  }
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class CreateLogin extends StatelessWidget {
+class _LoginPageState extends State<LoginPage> {
   final TextEditingController controllerEmail = TextEditingController();
   final TextEditingController controllerPassword = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
+    return Scaffold(backgroundColor: backgroundColor, body: _buildLoginPage());
+  }
+
+  Widget _buildLoginPage() {
+    return SingleChildScrollView(
+      child: Padding(
         padding: EdgeInsets.symmetric(vertical: 80, horizontal: 20),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -44,26 +48,28 @@ class CreateLogin extends StatelessWidget {
               padding: EdgeInsets.only(top: 40),
               child: Column(
                 children: [
-                  MyForm(controllerEmail, 'EMAIL', 1, 30, TextInputType.text,
-                      false),
+                  MyForm(controllerEmail, 'EMAIL', 1, 30,
+                      TextInputType.emailAddress, false),
                   MyPasswordForm(controllerPassword, 'SENHA', 1, 30,
                       TextInputType.text, false, true),
                 ],
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 40),
+              padding: EdgeInsets.symmetric(vertical: 32),
               child: Column(
                 children: [
                   TextButton(
-                      onPressed: () => print('IR PARA O CADASTRO'),
+                      onPressed: () =>
+                          Navigator.pushNamed(context, signupRoute),
                       child: Text(
                         'CRIAR UMA CONTA',
                         style: loginNavigationStyle,
                         textAlign: TextAlign.center,
                       )),
                   TextButton(
-                      onPressed: () => print('IR PARA ESQUECI MINHA SENHA!'),
+                      onPressed: () =>
+                          Navigator.pushNamed(context, recoverPasswordRoute),
                       child: Text(
                         'ESQUECI MINHA SENHA!',
                         style: loginNavigationStyle,
@@ -73,7 +79,7 @@ class CreateLogin extends StatelessWidget {
               ),
             ),
             ElevatedButton(
-              onPressed: () => print('ENTRAR'),
+              onPressed: onLogin,
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
                 child: Text("ENTRAR",
@@ -88,16 +94,7 @@ class CreateLogin extends StatelessWidget {
     );
   }
 
-  void _createPlaylist(BuildContext context) {
-    // final String playlistName = _controllerPlaylistName.text;
-    // final String playlistDescription = _controllerPlaylistDescription.text;
-    print("Não entendi oq tava aqui");
-    // if ((playlistName != '') && playlistDescription != '') {
-    //   final newListItem = ListItemProperties(
-    //       title: playlistName,
-    //       subtitle: playlistDescription,
-    //       isVerified: false);
-    //   print('$newListItem');
-    //   Navigator.pop(context, newListItem);
+  void onLogin() {
+    Navigator.pushNamedAndRemoveUntil(context, homeRoute, (route) => false);
   }
 }

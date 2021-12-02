@@ -73,6 +73,7 @@ class _DeckDetailPageState extends State<DeckDetailPage> {
                     children: [
                       Text(
                         deck.name,
+                        maxLines: 3,
                         style: titleStyleBold,
                       ),
                       Text(

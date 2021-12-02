@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flashcard/infrastructure/models/create_deck_payload.dart';
 import 'package:flashcard/infrastructure/models/deck.dart';
+import 'package:flashcard/infrastructure/models/playlist.dart';
 import 'package:flashcard/infrastructure/services/deck_service.dart';
 import 'package:http/http.dart';
 
@@ -22,6 +23,11 @@ class DeckRepository {
     return _parseDeckList(response);
   }
 
+  Future<List<Deck>> searchDecks(String query) async {
+    Response response = await _deckService.searchDecks(query);
+    return _parseDeckList(response);
+  }
+
   Future<List<Deck>> getPopularDecks() async {
     Response response = await _deckService.getPopularDecks();
     return _parseDeckList(response);
@@ -37,7 +43,7 @@ class DeckRepository {
     return _parseDeckList(response);
   }
 
-  Future<Deck> createDeck(CreateDeckPayload payload) async{
+  Future<Deck> createDeck(CreateDeckPayload payload) async {
     Response response = await _deckService.createDeck(payload);
     return Deck.fromJson(json.decode(response.body));
   }
@@ -45,5 +51,10 @@ class DeckRepository {
   List<Deck> _parseDeckList(Response response) {
     List body = json.decode(response.body);
     return body.map((e) => Deck.fromJson(e)).toList();
+  }
+
+  Future<Playlist> addDeckToPlaylist(String playlistId, String deckId) async {
+    Response response = await _deckService.addDeckToPlaylist(playlistId, deckId);
+    return Playlist.fromJson(json.decode(response.body));
   }
 }

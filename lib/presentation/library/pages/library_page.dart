@@ -95,12 +95,9 @@ class _LibraryPageState extends State<LibraryPage> {
                 child: Titles("Meus Decks"),
               ),
               ...decks
-                  .map((deck) => ListItem(
-                      title: deck.name,
-                      subTitle: deck.description,
-                      imageURL: deck.imageURL,
-                      isVerified: false,
-                      onTap: () => Navigator.pushNamed(context, deckDetailRoute,
+                  .map((deck) => ListItem.fromDeck(
+                      deck,
+                      () => Navigator.pushNamed(context, deckDetailRoute,
                           arguments: DeckDetailPageArguments(deckId: deck.id))))
                   .toList(),
             ],

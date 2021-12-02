@@ -23,7 +23,20 @@ class BaseService {
       {required String path, Map<String, String>? params, Object? body}) async {
     final response = await _client.post(Uri.http(_BASE_URL, path, params),
         headers: {"userId": "Totoro", "Content-Type": "application/json"},
-        body: json.encode(body))                     ;
+        body: json.encode(body));
+
+    if (response.statusCode < 299) {
+      return response;
+    } else {
+      throw Error();
+    }
+  }
+
+  Future<Response> patch(
+      {required String path, Map<String, String>? params, Object? body}) async {
+    final response = await _client.patch(Uri.http(_BASE_URL, path, params),
+        headers: {"userId": "Totoro", "Content-Type": "application/json"},
+        body: json.encode(body));
 
     if (response.statusCode < 299) {
       return response;
