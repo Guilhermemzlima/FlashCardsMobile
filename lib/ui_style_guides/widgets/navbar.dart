@@ -21,8 +21,8 @@ class Navbar extends StatelessWidget {
         BottomNavigationBarItem(label: "Busca", icon: Icon(Icons.search))),
     NavbarItem(libraryRoute,
         BottomNavigationBarItem(label: "Biblioteca", icon: Icon(Icons.book))),
-    NavbarItem(reviewRoute,
-        BottomNavigationBarItem(label: "Perfil", icon: Icon(Icons.person))),
+    // NavbarItem(reviewRoute,
+    //     BottomNavigationBarItem(label: "Perfil", icon: Icon(Icons.person))),
   ];
 
   @override
@@ -30,12 +30,14 @@ class Navbar extends StatelessWidget {
     return BottomNavigationBar(
       backgroundColor: actionMainColor,
       selectedItemColor: black,
+      type: BottomNavigationBarType.shifting,
       unselectedLabelStyle: TextStyle(color: actionMainColor),
       unselectedItemColor: actionMainColor,
       currentIndex: currentIndex,
       items: _navbarItems.map((e) => e.navigationBarItem).toList(),
-      onTap: (int index) =>
-          Navigator.pushNamed(context, _navbarItems[index].route, arguments: ReviewPageArguments(deckId: "619c03022eb65b814bb41120")),
+      onTap: (int index) => Navigator.pushNamed(
+          context, _navbarItems[index].route,
+          arguments: ReviewPageArguments(deckId: "619c03022eb65b814bb41120")),
     );
   }
 }
