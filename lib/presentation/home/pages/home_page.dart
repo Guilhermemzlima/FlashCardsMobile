@@ -6,6 +6,7 @@ import 'package:flashcard/presentation/deck/pages/deck_detail_page.dart';
 import 'package:flashcard/presentation/home/bloc/home_bloc.dart';
 import 'package:flashcard/presentation/playlist/pages/create_playlist_page.dart';
 import 'package:flashcard/presentation/playlist/pages/playlist_detail_page.dart';
+import 'package:flashcard/ui_style_guides/widgets/empty_state.dart';
 import 'package:flashcard/ui_style_guides/widgets/floating_create_button.dart';
 import 'package:flashcard/ui_style_guides/widgets/navbar.dart';
 import 'package:flutter/material.dart';
@@ -59,20 +60,20 @@ class HomePageState extends State<HomePage> {
               child: Titles("Decks Recentes"),
             ),
             _bloc.myRecentDecks.toBuild(
-                onSuccess: (List<Deck> decks) => Column(
-                      children: decks
-                          .map((deck) => ListItem.fromDeck(
-                              deck,
-                              () => Navigator.pushNamed(
-                                  context, deckDetailRoute,
-                                  arguments: DeckDetailPageArguments(
-                                      deckId: deck.id))))
-                          .toList(),
-                    ),
-                onLoading: Column(
-                  children: List.generate(4, (_) => ListItem.getShimmer()),
-                ),
-                onError: Text("Failed"))
+              onSuccess: (List<Deck> decks) => Column(
+                children: decks
+                    .map((deck) => ListItem.fromDeck(
+                        deck,
+                        () => Navigator.pushNamed(context, deckDetailRoute,
+                            arguments:
+                                DeckDetailPageArguments(deckId: deck.id))))
+                    .toList(),
+              ),
+              onLoading: Column(
+                children: List.generate(4, (_) => ListItem.getShimmer()),
+              ),
+              onError: EmptyState(),
+            )
           ],
         ),
       ),

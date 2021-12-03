@@ -79,10 +79,10 @@ class ListItem extends StatelessWidget {
                   Expanded(child: Text(subTitle, style: subTitleStyle)),
                 ],
               ),
-              trailing: Icon(
-                Icons.more_vert,
-                color: Colors.black,
-              ),
+              // trailing: Icon(
+              //   Icons.more_vert,
+              //   color: Colors.black,
+              // ),
             ),
           ),
         ));

@@ -45,6 +45,8 @@ class _ReviewResultsPageState extends State<ReviewResultsPage> {
 
   Widget _buildSessionResultPage(Session session) {
     int totalCards = session.hitsCount + session.mistakesCount;
+    List<CardModel> hits = session.hits != null ? session.hits! : List.empty();
+    List<CardModel> mistakes = session.mistakes != null ? session.mistakes! : List.empty();
     return ListView(
       children: [
         PieChart(dataMap: {
@@ -55,14 +57,14 @@ class _ReviewResultsPageState extends State<ReviewResultsPage> {
           padding: const EdgeInsets.only(top: 20.0, left: 10),
           child: Titles("Acertos ${session.hitsCount.toString()}/$totalCards"),
         ),
-        ...session.hits!.map((CardModel card) =>
+        ...hits.map((CardModel card) =>
             CardListItem(cardText: card.front, cardColor: card.color)),
         Padding(
           padding: const EdgeInsets.only(top: 15.0, left: 10),
           child:
               Titles("Erros ${session.mistakesCount.toString()}/$totalCards"),
         ),
-        ...session.mistakes!.map((CardModel card) =>
+        ...mistakes.map((CardModel card) =>
             CardListItem(cardText: card.front, cardColor: card.color))
       ],
     );

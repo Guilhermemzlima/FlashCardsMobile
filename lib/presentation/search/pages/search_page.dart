@@ -4,6 +4,7 @@ import 'package:flashcard/infrastructure/routes/routes.dart';
 import 'package:flashcard/presentation/deck/pages/deck_detail_page.dart';
 import 'package:flashcard/presentation/playlist/pages/playlist_detail_page.dart';
 import 'package:flashcard/presentation/search/bloc/search_bloc.dart';
+import 'package:flashcard/ui_style_guides/widgets/empty_state.dart';
 import 'package:flashcard/ui_style_guides/widgets/navbar.dart';
 import 'package:flutter/material.dart';
 
@@ -111,19 +112,23 @@ class _SearchPageState extends State<SearchPage> {
             child: Titles("Fugir da rotina"),
           ),
           _bloc.escapeDecks.toBuild(
-              onSuccess: (List<Deck> decks) => Column(
-                  children: decks
-                      .map(
-                        (deck) => ListItem.fromDeck(
-                          deck,
-                          () => Navigator.pushNamed(
-                            context,
-                            deckDetailRoute,
-                            arguments: DeckDetailPageArguments(deckId: deck.id),
+              onSuccess: (List<Deck> decks) {
+                if (decks.isEmpty) return EmptyState();
+                return Column(
+                    children: decks
+                        .map(
+                          (deck) => ListItem.fromDeck(
+                            deck,
+                            () => Navigator.pushNamed(
+                              context,
+                              deckDetailRoute,
+                              arguments:
+                                  DeckDetailPageArguments(deckId: deck.id),
+                            ),
                           ),
-                        ),
-                      )
-                      .toList()),
+                        )
+                        .toList());
+              },
               onLoading: Column(
                   children: List.generate(
                 4,
@@ -135,19 +140,23 @@ class _SearchPageState extends State<SearchPage> {
             child: Titles("Popular"),
           ),
           _bloc.popularDecks.toBuild(
-              onSuccess: (List<Deck> decks) => Column(
-                  children: decks
-                      .map(
-                        (deck) => ListItem.fromDeck(
-                          deck,
-                          () => Navigator.pushNamed(
-                            context,
-                            deckDetailRoute,
-                            arguments: DeckDetailPageArguments(deckId: deck.id),
+              onSuccess: (List<Deck> decks) {
+                if (decks.isEmpty) return EmptyState();
+                return Column(
+                    children: decks
+                        .map(
+                          (deck) => ListItem.fromDeck(
+                            deck,
+                            () => Navigator.pushNamed(
+                              context,
+                              deckDetailRoute,
+                              arguments:
+                                  DeckDetailPageArguments(deckId: deck.id),
+                            ),
                           ),
-                        ),
-                      )
-                      .toList()),
+                        )
+                        .toList());
+              },
               onLoading: Column(
                   children: List.generate(
                 10,

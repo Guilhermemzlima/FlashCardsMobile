@@ -1,16 +1,23 @@
+import 'package:flashcard/infrastructure/models/create_user_payload.dart';
+import 'package:flashcard/infrastructure/repositories/auth_repository.dart';
 import 'package:flashcard/infrastructure/routes/routes.dart';
 import 'package:flashcard/presentation/login/widgets/my_password_form.dart';
+import 'package:flashcard/ui_style_guides/widgets/loader.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flashcard/ui_style_guides/ui_style_guides.dart';
 
 class RegistrationPage extends StatefulWidget {
+  final AuthRepository authRepository = AuthRepository();
+
   @override
   _RegistrationPageState createState() => _RegistrationPageState();
 }
 
 class _RegistrationPageState extends State<RegistrationPage> {
+  late final AuthRepository _repository;
+  ValueNotifier<bool> loading = ValueNotifier(false);
   final TextEditingController controllerUsername = TextEditingController();
   final TextEditingController controllerEmail = TextEditingController();
   final TextEditingController controllerPassword = TextEditingController();
@@ -20,6 +27,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
   @override
   void initState() {
     super.initState();
+    _repository = widget.authRepository;
   }
 
   @override
@@ -27,7 +35,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
     return Scaffold(
         extendBody: true,
         backgroundColor: backgroundColor,
-        body: SingleChildScrollView(child: _buildRegistrationPage()));
+        body: ValueListenableBuilder<bool>(
+          valueListenable: loading,
+          builder: (context, value, widget) => value
+              ? Loader()
+              : SingleChildScrollView(child: _buildRegistrationPage()),
+        ));
   }
 
   Widget _buildRegistrationPage() {
@@ -83,7 +96,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   ),
                 ),
                 ElevatedButton(
-                  onPressed: () => print('CRIA USUARIO'),
+                  onPressed: () => submitRegistration(),
                   child: Padding(
                     padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
                     child: Text("CADASTRAR", style: subTitleStyleBoldWhite),
@@ -98,5 +111,19 @@ class _RegistrationPageState extends State<RegistrationPage> {
         ],
       ),
     );
+  }
+
+  void submitRegistration() {
+    var payload = CreateUserPayload(
+        email: controllerEmail.text,
+        name: controllerUsername.text,
+        password: controllerPassword.text);
+    loading.value = true;
+    _repository.createUser(payload).then((value) {
+      Navigator.pop(context);
+      Navigator.pushNamed(context, loginRoute);
+    }).onError((error, stackTrace) {
+      loading.value = false;
+    });
   }
 }

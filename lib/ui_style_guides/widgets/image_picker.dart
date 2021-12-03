@@ -6,7 +6,24 @@ class ImagePicker extends StatelessWidget {
 
   final List<String> _images = [
     "https://storage.googleapis.com/flashcard-images/img_placeholder.png",
-    "https://storage.googleapis.com/flashcard-images/jslogo.png"
+    "https://storage.googleapis.com/flashcard-images/jslogo.png",
+    "https://storage.googleapis.com/flashcard-images/angularjs.png",
+    "https://storage.googleapis.com/flashcard-images/apache.png",
+    "https://storage.googleapis.com/flashcard-images/bootstrap.png",
+    "https://storage.googleapis.com/flashcard-images/c.png",
+    "https://storage.googleapis.com/flashcard-images/cplusplus.png",
+    "https://storage.googleapis.com/flashcard-images/css3.png",
+    "https://storage.googleapis.com/flashcard-images/docker.png",
+    "https://storage.googleapis.com/flashcard-images/git.png",
+    "https://storage.googleapis.com/flashcard-images/gitlab.png",
+    "https://storage.googleapis.com/flashcard-images/go.png",
+    "https://storage.googleapis.com/flashcard-images/html5.png",
+    "https://storage.googleapis.com/flashcard-images/jquery.png",
+    "https://storage.googleapis.com/flashcard-images/mongodb.png",
+    "https://storage.googleapis.com/flashcard-images/node-js.png",
+    "https://storage.googleapis.com/flashcard-images/php.png",
+    "https://storage.googleapis.com/flashcard-images/react.png",
+    "https://storage.googleapis.com/flashcard-images/ruby.png",
   ];
 
   ImagePicker({Key? key, required this.imageURL}) : super(key: key);

@@ -77,17 +77,6 @@ class _CreateCardState extends State<CreateCardPage> {
             MyForm(
                 _controllerFront, 'FRENTE', 6, 300, TextInputType.text, true),
             MyForm(_controllerBack, 'VERSO', 6, 300, TextInputType.text, true),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Titles('Cor do cartão'),
-            ),
-            Row(
-              children: List.generate(
-                  colors.length,
-                  (index) => Flexible(
-                      fit: FlexFit.tight,
-                      child: SquareColorPicker(colors[index]))),
-            ),
             Padding(
               padding: EdgeInsets.only(top: 40),
               child: ElevatedButton(

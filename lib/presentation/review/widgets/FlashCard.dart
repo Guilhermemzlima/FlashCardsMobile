@@ -16,10 +16,12 @@ class FlashCard extends StatelessWidget {
         fill: Fill.fillBack,
         direction: FlipDirection.HORIZONTAL,
         front: Container(
+          padding: EdgeInsets.symmetric(horizontal: 20),
           color: this.color,
           child: Center(child: Text(this.frontText, maxLines: 5,)),
         ),
         back: Container(
+          padding: EdgeInsets.symmetric(horizontal: 20),
           color: this.color,
           child: Center(child: Text(this.backText, maxLines: 5,)),
         ),

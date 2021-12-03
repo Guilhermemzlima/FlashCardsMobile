@@ -1,6 +1,7 @@
 import 'package:flashcard/infrastructure/models/playlist.dart';
 import 'package:flashcard/infrastructure/routes/routes.dart';
 import 'package:flashcard/presentation/playlist/pages/playlist_detail_page.dart';
+import 'package:flashcard/ui_style_guides/widgets/empty_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flashcard/ui_style_guides/ui_style_guides.dart';
 
@@ -10,6 +11,7 @@ class ImageCardListWidget extends StatelessWidget {
   const ImageCardListWidget({Key? key, required this.cards}) : super(key: key);
 
   static fromPlaylists(List<Playlist> playlist, BuildContext context) {
+    if(playlist.isEmpty) return EmptyState();
     return ImageCardListWidget(
         cards: playlist
             .map((it) => ImageCardContent(

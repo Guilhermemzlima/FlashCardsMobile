@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart';
 
-const String _BASE_URL = "10.0.2.2:5000";
+const String _BASE_URL = "34.125.7.204:5000";
 
 class AuthBaseService {
   Client _client = Client();

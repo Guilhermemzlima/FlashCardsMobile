@@ -9,7 +9,7 @@ class CreateDeckPayload {
       {required this.name,
       required this.description,
       this.imageURL = "https://picsum.photos/200/300",
-      this.isPrivate = true});
+      this.isPrivate = false});
 
   Map<String, dynamic> toJson() {
     return {

@@ -3,6 +3,7 @@ import 'package:flashcard/infrastructure/models/playlist.dart';
 import 'package:flashcard/infrastructure/routes/routes.dart';
 import 'package:flashcard/presentation/deck/pages/deck_detail_page.dart';
 import 'package:flashcard/presentation/library/bloc/library_bloc.dart';
+import 'package:flashcard/ui_style_guides/widgets/empty_state.dart';
 import 'package:flashcard/ui_style_guides/widgets/floating_create_button.dart';
 import 'package:flashcard/ui_style_guides/widgets/loading_stream_resolver.dart';
 import 'package:flashcard/ui_style_guides/widgets/navbar.dart';
@@ -63,14 +64,14 @@ class _LibraryPageState extends State<LibraryPage> {
                   stream: _bloc.myPlaylists,
                   onSuccess: (List<Playlist> playlists) =>
                       ImageCardListWidget.fromPlaylists(playlists, context),
-                  onError: Text("Failed"),
+                  onError: EmptyState(),
                 ),
               ),
               Center(
                 child: LoadingStreamResolver<List<Deck>>(
                     stream: _bloc.myDeckList,
                     onSuccess: (List<Deck> decks) => _buildDeckTab(decks),
-                    onError: Text("Failed")),
+                    onError: EmptyState()),
               )
             ],
           ),
@@ -80,6 +81,7 @@ class _LibraryPageState extends State<LibraryPage> {
   }
 
   Widget _buildDeckTab(List<Deck> decks) {
+    if (decks.isEmpty) return EmptyState();
     return ListView(
       children: [
         Container(
