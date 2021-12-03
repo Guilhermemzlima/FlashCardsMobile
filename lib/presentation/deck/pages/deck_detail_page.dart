@@ -1,3 +1,4 @@
+import 'package:flashcard/infrastructure/globals.dart';
 import 'package:flashcard/infrastructure/models/card.dart';
 import 'package:flashcard/infrastructure/models/deck.dart';
 import 'package:flashcard/infrastructure/routes/routes.dart';
@@ -105,23 +106,27 @@ class _DeckDetailPageState extends State<DeckDetailPage> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 10, bottom: 40),
-                      child: OutlinedButton(
-                        onPressed: () => Navigator.pushNamed(
-                            context, createCardRoute,
-                            arguments: CreateCardPageArgs(deckId: deck.id)),
-                        child: Padding(
-                          padding:
-                              EdgeInsets.symmetric(vertical: 5, horizontal: 18),
-                          child: Text(
-                            "ADICIONAR CARD",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        style: ButtonStyle(
-                            foregroundColor: MaterialStateProperty.all(black),
-                            side: MaterialStateProperty.all(
-                                BorderSide(color: black, width: 2))),
-                      ),
+                      child: deck.userid == Globals.userId
+                          ? OutlinedButton(
+                              onPressed: () => Navigator.pushNamed(
+                                  context, createCardRoute,
+                                  arguments:
+                                      CreateCardPageArgs(deckId: deck.id)),
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 5, horizontal: 18),
+                                child: Text(
+                                  "ADICIONAR CARD",
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              style: ButtonStyle(
+                                  foregroundColor:
+                                      MaterialStateProperty.all(black),
+                                  side: MaterialStateProperty.all(
+                                      BorderSide(color: black, width: 2))),
+                            )
+                          : SizedBox.shrink(),
                     )
                   ],
                 ),

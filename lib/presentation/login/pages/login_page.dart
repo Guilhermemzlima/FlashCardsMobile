@@ -54,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Image(
                 height: 100,
                 image: NetworkImage(
-                    'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                    'https://storage.googleapis.com/flashcard-images/educard.png'),
               ),
             ),
             Text(
@@ -85,14 +85,6 @@ class _LoginPageState extends State<LoginPage> {
                         style: loginNavigationStyle,
                         textAlign: TextAlign.center,
                       )),
-                  TextButton(
-                      onPressed: () =>
-                          Navigator.pushNamed(context, recoverPasswordRoute),
-                      child: Text(
-                        'ESQUECI MINHA SENHA!',
-                        style: loginNavigationStyle,
-                        textAlign: TextAlign.center,
-                      ))
                 ],
               ),
             ),

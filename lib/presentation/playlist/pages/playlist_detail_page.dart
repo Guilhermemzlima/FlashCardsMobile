@@ -1,3 +1,4 @@
+import 'package:flashcard/infrastructure/globals.dart';
 import 'package:flashcard/infrastructure/models/deck.dart';
 import 'package:flashcard/infrastructure/models/playlist.dart';
 import 'package:flashcard/infrastructure/routes/routes.dart';
@@ -103,7 +104,7 @@ class _PlaylistDetailPageState extends State<PlaylistDetailPage> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 10, bottom: 40),
-                  child: OutlinedButton(
+                  child: playlist.userId == Globals.userId ? OutlinedButton(
                     onPressed: () => Navigator.pushNamed(
                         context, addDeckToPlaylistRoute,
                         arguments:
@@ -120,7 +121,7 @@ class _PlaylistDetailPageState extends State<PlaylistDetailPage> {
                         foregroundColor: MaterialStateProperty.all(black),
                         side: MaterialStateProperty.all(
                             BorderSide(color: black, width: 2))),
-                  ),
+                  ) : SizedBox.shrink(),
                 )
               ],
             ),
