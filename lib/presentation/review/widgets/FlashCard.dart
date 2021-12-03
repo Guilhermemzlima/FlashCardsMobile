@@ -1,3 +1,4 @@
+import 'package:flashcard/ui_style_guides/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flip_card/flip_card.dart';
 
@@ -18,12 +19,24 @@ class FlashCard extends StatelessWidget {
         front: Container(
           padding: EdgeInsets.symmetric(horizontal: 20),
           color: this.color,
-          child: Center(child: Text(this.frontText, maxLines: 5,)),
+          child: Center(
+              child: Text(
+            this.frontText,
+            style: reviewCardStyle,
+            textAlign: TextAlign.center,
+            maxLines: 5,
+          )),
         ),
         back: Container(
           padding: EdgeInsets.symmetric(horizontal: 20),
           color: this.color,
-          child: Center(child: Text(this.backText, maxLines: 5,)),
+          child: Center(
+              child: Text(
+            this.backText,
+            style: reviewCardStyle,
+            textAlign: TextAlign.center,
+            maxLines: 5,
+          )),
         ),
       ),
     );

@@ -22,6 +22,11 @@ final subTitleStyle = GoogleFonts.roboto(
       TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w300, overflow: TextOverflow.ellipsis),
 );
 
+final reviewCardStyle = GoogleFonts.roboto(
+  textStyle:
+  TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w300, overflow: TextOverflow.ellipsis),
+);
+
 final subTitleStyleBold = GoogleFonts.roboto(
   textStyle:
       TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w700, overflow: TextOverflow.ellipsis),
